@@ -1,4 +1,4 @@
-import {Home, NavBar} from './Components'
+import {Home, NavBar, Men, PicUpload} from './Components'
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -15,6 +15,9 @@ function App() {
         <h1 style={{fontFamily: 'chalkduster', marginTop: '5%'}}>The Shoe Master</h1>
         <Routes>
           <Route path='/' element={<Home/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/men' element={<Men/>}/>
         </Routes>
       </Router>
 
