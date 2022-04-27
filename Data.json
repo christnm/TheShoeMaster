@@ -8,5 +8,25 @@
         "Name": "Oreo 4",
         "Size": [10],
         "Picture": ""
+    },
+    {
+        "Name": "Jordan UNC4",
+        "Size": [8,9,10],
+        "Picture": ""
+    },
+    {
+        "Name": "Jordan UNC3",
+        "Size": [8,9,10],
+        "Picture": ""
+    }, 
+    {
+        "Name": "Jordan UNC2",
+        "Size": [8,9,10],
+        "Picture": ""
+    },
+     {
+        "Name": "Jordan UNC1",
+        "Size": [8,9,10],
+        "Picture": ""
     }
 ]
