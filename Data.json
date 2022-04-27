@@ -1,13 +1,12 @@
 [
     {
-        "Name": "Air Force 1",
-        "Size": [8,9,10],
+        "Name": "UNC 4s",
+        "Size": [8,10.5],
         "Picture": ""
     },
     {
-        "Name": "Jordan UNC",
-        "Size": [8,9,10],
+        "Name": "Oreo 4",
+        "Size": [10],
         "Picture": ""
     }
-
 ]

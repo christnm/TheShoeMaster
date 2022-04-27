@@ -1,4 +1,4 @@
-import {Home, NavBar, Men, PicUpload} from './Components'
+import {Home, NavBar, Men, PicUpload, Women, Contact, Admin} from './Components'
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -12,12 +12,21 @@ function App() {
     <div className='App'>
       <Router>
         <NavBar/>
-        <h1 style={{fontFamily: 'chalkduster', marginTop: '5%'}}>The Shoe Master</h1>
+        <h1 style={{fontFamily: 'chalkduster', marginTop: '5%', marginBottom: '5%'}}>The Shoe Master</h1>
         <Routes>
           <Route path='/' element={<Home/>}/>
         </Routes>
         <Routes>
           <Route path='/men' element={<Men/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/women' element={<Women/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/contact' element={<Contact/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/admin' element={<Admin/>}/>
         </Routes>
       </Router>
 

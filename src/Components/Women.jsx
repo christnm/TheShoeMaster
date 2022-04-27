@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import {Button, Container, Carousel, Card, CardImg,Col, Row } from "react-bootstrap"
+import {Button, Container, Carousel, Card, CardImg, } from "react-bootstrap"
 
 
 
-const Men = () => {
+const Women = () => {
 
     const [display, setDisplay] = useState([])
 
@@ -20,8 +20,8 @@ const Men = () => {
 
     return (
         <>
-        <Container style={{maxWidth: '100%', height: '30rem', backgroundColor: 'transparent'}}>
-            {/* <Carousel variant={'dark'} style={{minWidth: '80%',maxWidth:'100%',display: 'inline-flex',justifyContent: 'center'}}>
+        <Container style={{maxWidth: '100%', height: '30rem'}}>
+            <Carousel variant={'dark'} style={{minWidth: '50%',maxWidth:'100%',display: 'inline-flex',justifyContent: 'center'}}>
                         {display.map(shoe => (
                             <Carousel.Item style={{minHeight: '30rem'}} >
                             <Card style={{ display:'inline-flex', justifyContent: 'center',backgroundColor: 'transparent', width: '20rem'}}>
@@ -43,24 +43,10 @@ const Men = () => {
                         </Card>
                 </Carousel.Item>
                         ))}
-            </Carousel> */}
-            <Row xs={1} md={4} className="g-4" style={{backgroundColor: 'transparent'}}>
-            {display.map(shoe => (
-                <Col>
-                    <Card style={{backgroundColor: 'transparent'}}>
-                        <Card.Img src="http://static1.squarespace.com/static/5afceb6f5ffd2052611eff46/5b3bb2028a922d4ba1d2153a/5cb155e3f9619adc67e4f2b8/1646334464256/nike-air-force-1-hall-of-sneakz.png?format=1500w"
-                            className="card-img-top" alt="..."/>
-                        <Card.Body className="card-body">
-                            <h5 className="card-title">{shoe.Name}</h5>
-                            <p className="card-text">Size: {shoe.Size}</p>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            ))}
-            </Row>
+            </Carousel>
         </Container>
         </>
     )
 
 }
-export default Men
+export default Women
