@@ -27,22 +27,17 @@ const Men = () => {
                 <Col>
                     <Card style={{backgroundColor: 'white', borderColor: 'black'}}>
                         <Carousel style={{height: '20rem'}} variant="dark">
-                            <Carousel.Item>
-                                <Card.Img alt="No pic" src="https://images.stockx.com/360/Nike-Air-Force-1-Low-White-07/Images/Nike-Air-Force-1-Low-White-07/Lv2/img01.jpg?fm=avif&auto=compress&w=480&dpr=2&updated_at=1635275427&h=320&q=80"/>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <Card.Img src="https://images.stockx.com/360/Nike-Air-Force-1-Low-White-07/Images/Nike-Air-Force-1-Low-White-07/Lv2/img10.jpg?fm=avif&auto=compress&w=480&dpr=2&updated_at=1635275427&h=320&q=80" alt="Pic 2"/>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                    
-                                <Card.Img src="https://images.stockx.com/360/Nike-Air-Force-1-Low-White-07/Images/Nike-Air-Force-1-Low-White-07/Lv2/img17.jpg?fm=avif&auto=compress&w=480&dpr=2&updated_at=1635275427&h=320&q=80" alt="Pic 3"/>
-                            </Carousel.Item>
+                            {shoe.Picture.map( pic => (
+                                <Carousel.Item>
+                                    <Card.Img src={pic} alt="Error Loading Pic"/>
+                                </Carousel.Item>
+                            ))}
                             
                             </Carousel>
                             
                         <Card.Body style={{backgroundColor: 'black', color: 'white'}} className="card-body">
                             <h5 className="card-title">{shoe.Name}</h5>
-                            <p className="card-text">Size(s): {shoe.Size.join(',')}</p>
+                            <p className="card-text">Size(s) Available: {shoe.Size.join(',')}</p>
                             <Button href='/contact' variant='secondary' >
                             Ask About This Shoe
                         </Button>
