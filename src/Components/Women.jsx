@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {Button, Container, Carousel, Card, CardImg, } from "react-bootstrap"
+import {Button, Container, Carousel, Card, CardImg,Row, Col } from "react-bootstrap"
 
 
 
@@ -8,7 +8,7 @@ const Women = () => {
     const [display, setDisplay] = useState([])
 
     useEffect(()=>{
-        fetch("https://raw.githubusercontent.com/christnm/TheShoeMaster/master/Data.json")
+        fetch("https://raw.githubusercontent.com/christnm/TheShoeMaster/master/DataWomen.json")
     .then(response => response.json())
     .then((data) => {
         setDisplay(data);
@@ -20,30 +20,33 @@ const Women = () => {
 
     return (
         <>
-        <Container style={{maxWidth: '100%', height: '30rem'}}>
-            <Carousel variant={'dark'} style={{minWidth: '50%',maxWidth:'100%',display: 'inline-flex',justifyContent: 'center'}}>
-                        {display.map(shoe => (
-                            <Carousel.Item style={{minHeight: '30rem'}} >
-                            <Card style={{ display:'inline-flex', justifyContent: 'center',backgroundColor: 'transparent', width: '20rem'}}>
-                            <CardImg style={{minHeight: '70%', maxHeight: '75%'}} src="http://static1.squarespace.com/static/5afceb6f5ffd2052611eff46/5b3bb2028a922d4ba1d2153a/5cb155e3f9619adc67e4f2b8/1646334464256/nike-air-force-1-hall-of-sneakz.png?format=1500w">
-
-                            </CardImg>
-                            <Card.Body>
-                                <Card.Title style={{fontFamily: 'chalkduster'}}>
-                                    {shoe.Name}
-                                </Card.Title>
-                                <Card.Text>
-                                    {shoe.Size.join(',')}
-                                </Card.Text>
-                                <Button href='/contact' variant={'dark'}>
-                                    Ask about this!
-                                </Button>
-                                
-                            </Card.Body>
-                        </Card>
-                </Carousel.Item>
-                        ))}
-            </Carousel>
+        <Container style={{maxWidth: '100%', height: '30rem', backgroundColor: 'transparent'}}>
+    
+            <Row xs={1} md={4} className="g-4" style={{backgroundColor: 'transparent'}}>
+            {display.map(shoe => (
+                <Col>
+                    <Card style={{backgroundColor: 'white', borderColor: 'black'}}>
+                        <Carousel style={{height: '20rem'}} variant="dark">
+                            {shoe.Picture.map( pic => (
+                                <Carousel.Item>
+                                    <Card.Img src={pic} alt="Error Loading Pic"/>
+                                </Carousel.Item>
+                            ))}
+                            
+                            </Carousel>
+                            
+                        <Card.Body style={{backgroundColor: 'black', color: 'white'}} className="card-body">
+                            <h5 className="card-title">{shoe.Name}</h5>
+                            <p className="card-text">Size(s) Available: {shoe.Size.join(',')}</p>
+                            <Button href='/contact' variant='secondary' >
+                            Ask About This Shoe
+                        </Button>
+                        </Card.Body>
+                        
+                    </Card>
+                </Col>
+            ))}
+            </Row>
         </Container>
         </>
     )

@@ -6,8 +6,13 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { createContext } from 'react';
 
 function App() {
+  const loggedIn = false;
+
+  const loggedInContext = createContext(loggedIn);
+
   return (
     <div className='App'>
       <Router>
