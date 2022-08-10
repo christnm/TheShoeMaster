@@ -2,10 +2,6 @@ import { useState } from "react"
 import { Form, Button, Container,Col, Row } from "react-bootstrap"
 import emailjs from "@emailjs/browser"
 
-
-
-
-
 const Contact = () => {
     const [phone, setPhone] = useState('')
     const [size, setSize] = useState('')
@@ -55,8 +51,8 @@ const Contact = () => {
 
     return (
         <>
-            <Container style={{ width: '60%' }}>
-                <Form >
+            <Container >
+                <Form className="sm-1">
                     <Row>
                     <Form.Group as={Col} controlId="formBasicEmail">
                         <Form.Label>Name</Form.Label>
