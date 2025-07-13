@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "theshoemaster615-65248"
-  }
+  },
+  "targets": {
+    "theshoemaster615-65248": {
+      "hosting": {
+        "theshoemaster.web.app": [
+          "shoemaster"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

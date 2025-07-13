@@ -10,7 +10,6 @@ import {
 
 
 function App() {
-
   return (
     
       <div className='App'>
@@ -30,14 +29,10 @@ function App() {
             <Route path='/kids' element={<Kids />} />
           </Routes>
           <Routes>
-            <Route path='/contact' element={<Contact />} />
-          </Routes>
-          <Routes>
             <Route path='/admin' element={<Admin />} />
           </Routes>
           
         </Router>
-
       </div>
     
 

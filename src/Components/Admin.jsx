@@ -1,98 +1,71 @@
-import { Form, Container,Row,  Button, Modal } from "react-bootstrap"
-import {useState, useContext, useRef} from 'react'
-import { getMultiFactorResolver, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "@firebase/auth"
+import { useState, useRef, useEffect } from "react"
+import { Form, Container, Button, Card, Alert } from "react-bootstrap"
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "@firebase/auth"
 import { auth } from "../firebase-config"
-
+import { BsCheck } from "react-icons/bs"
 
 const Admin = () => {
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState(null)
+    const [error, setError] = useState("")
     const emailRef = useRef()
     const passRef = useRef()
-    const [show, setShow] = useState(false)
 
-    onAuthStateChanged(auth, (user1) => {
-        if (user1) {
-            const uid = user1.uid;
-            setUser(uid)
-          } else {
-            setUser("Not LoggedIn")
-          }
-    })
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user1) => {
+            if (user1) setUser(user1.uid)
+            else setUser(null)
+        })
+        return () => unsubscribe()
+    }, [])
 
-    const showModal = () => {
-        setShow(true)
-    }
-
-    const handleClose = () => {
-        setShow(false)
-    }
-    const LoggedInModal = () => {
-        return (
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header>
-                    <Modal.Title>
-                        Incorrect username or password
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                </Modal.Body>
-            <Modal.Footer>
-                <Button variant="dark" onClick={handleClose}>
-                    Close
-                </Button>
-        
-            </Modal.Footer>
-            </Modal>
-
-        )
-    }
+    const logo = () => user ? <BsCheck className="fs-1 me-2" /> : null
 
     const Authenticate = async () => {
-        try{
-            const user = await signInWithEmailAndPassword(auth, emailRef.current.value, passRef.current.value)
-            console.log(user)
-        }catch(error){
-            console.error("Incorrect username or password")
+        try {
+            await signInWithEmailAndPassword(auth, emailRef.current.value, passRef.current.value)
+            setError("")
+        } catch (error) {
+            setError("Incorrect username or password.")
+            console.error("Authentication error", error)
         }
     }
-   
 
     const LogOut = async () => {
         await signOut(auth)
-        console.log("Signed out successful")
     }
-    
+
     return (
         <>
-        <Container className="block-example border border-dark" style={{width: '50%'}}  >
-            <Form style={{display: 'flex', justifyContent: 'center'}}>
-                <Row>
-                <Form.Group style={{marginBottom: '5px', width: '100%'}}>
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type='email' ref={emailRef} placeholder="name@mail.com" >
-                    </Form.Control>
-                </Form.Group>
-                <p>Current user = {user}</p>
-                <Form.Group style={{marginBottom: '5px', width: '100%'}}>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type='password' ref={passRef} placeholder="password" >
-                    </Form.Control>
-                </Form.Group>
-                
-                </Row>
-                
-            </Form>
-            <Button style={{margin: '10px'}} onClick={Authenticate}>LogIn</Button>
-            <Button style={{margin: '10px'}} onClick={LogOut}>LogOut</Button>
-        </Container>
-        
-
+            <Container 
+                className="d-flex flex-column align-items-center justify-content-start pt-3" 
+                style={{ height: '120vh', backgroundColor: 'transparent', fontFamily: 'YourFontName, sans-serif' }}
+            >
+                <Card className="shadow rounded" style={{ maxWidth: '400px', width: '100%', maxHeight: '95vh', overflowY: 'auto', backgroundColor: 'transparent', border: 'none' }}>
+                    <Card.Header className="text-center py-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+                        {logo()}
+                        <h4 className="mb-0 text-white">Admin Panel</h4>
+                    </Card.Header>
+                    <Card.Body className="text-white" style={{ backgroundColor: 'transparent' }}>
+                        {error && <Alert variant="danger">{error}</Alert>}
+                        <Form>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="email" ref={emailRef} placeholder="name@mail.com" size="lg" />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" ref={passRef} placeholder="password" size="lg" />
+                            </Form.Group>
+                            <div className="d-grid gap-3">
+                                <Button variant="primary" size="lg" onClick={Authenticate}>Log In</Button>
+                                <Button variant="outline-secondary" size="lg" onClick={LogOut}>Log Out</Button>
+                            </div>
+                        </Form>
+                    </Card.Body>
+                </Card>
+            </Container>
         </>
     )
-
-
-
-
 }
 
 export default Admin

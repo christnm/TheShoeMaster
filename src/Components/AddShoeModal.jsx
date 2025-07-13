@@ -1,11 +1,9 @@
 import React, { useState, useRef } from "react"
-import { Dropdown, Modal, Form, Button } from "react-bootstrap"
+import { Modal, Form, Button } from "react-bootstrap"
 
 const AddShoeModal = ({ onPost }) => {
 
     const [show, setShow] = useState(false)
-    const [numberOfPic, setNumberOfPics] = useState(0)
-    const [picVal, setPicVal] = useState()
     const nameRef = useRef()
     const sizeRef = useRef()
     const pRef = useRef()
@@ -58,7 +56,6 @@ const AddShoeModal = ({ onPost }) => {
                             <Form.Control placeholder="Enter a picture link" ref={pic3} />
                             <Form.Label>Picture Link</Form.Label>
                             <Form.Control placeholder="Enter a picture link" ref={pic4} />
-                            <p>Pictures added: {numberOfPic} </p>   
                         </Form.Group>
                     </Form>
 
