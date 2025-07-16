@@ -86,7 +86,7 @@ const Women = () => {
                         No shoes available at the moment.
                     </div>
                 ) : (
-                    <Row xs={1} md={4} className="g-4" style={{ backgroundColor: 'transparent', maxHeight: "30rem" }}>
+                    <Row xs={1} sm={2} md={3} lg={4} className="g-4" style={{ backgroundColor: 'transparent', maxHeight: "30rem" }}>
                         {display?.map(shoe => (
                             <Col key={shoe.id}>
                                 <Card className="mb-4 shadow-sm border-0">
