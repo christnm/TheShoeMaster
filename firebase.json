@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "theshoemaster",
     "public": "build",
     "ignore": [
       "firebase.json",

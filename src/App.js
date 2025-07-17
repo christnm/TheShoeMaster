@@ -1,16 +1,14 @@
-import { Home, NavBar, Men, PicUpload, Women, Contact, Admin, Kids } from './Components'
+import { Home, NavBar, Men, Women, Admin, Kids } from './Components'
 import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 
 
 
 function App() {
-
   return (
     
       <div className='App'>
@@ -30,14 +28,10 @@ function App() {
             <Route path='/kids' element={<Kids />} />
           </Routes>
           <Routes>
-            <Route path='/contact' element={<Contact />} />
-          </Routes>
-          <Routes>
             <Route path='/admin' element={<Admin />} />
           </Routes>
           
         </Router>
-
       </div>
     
 
