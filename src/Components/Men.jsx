@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
-import { Button, Container, Carousel, Card, Col, Row } from "react-bootstrap"
+import { Button, Container, Card, Col, Row } from "react-bootstrap"
 import { db, auth} from '../firebase-config'
 import { AddShoeModal, Contact} from "."
 import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
 import { onAuthStateChanged } from "@firebase/auth"
 import { BsFillChatDotsFill, BsInstagram, BsSnapchat} from 'react-icons/bs';
+import ImageCollage from "./ImageCollage"
 
 const Men = () => {
     const [display, setDisplay] = useState([])
@@ -81,26 +82,25 @@ const Men = () => {
                         No shoes available at the moment.
                     </div>
                 ) : (
-                    <Row xs={1} sm={2} md={3} lg={4} className="g-4" style={{ backgroundColor: 'transparent', maxHeight: "30rem" }}>
+                    <Row xs={1} sm={2} md={3} lg={3} xl={4} xxl={4} className="g-3" >
                         {display?.map(shoe => (
-                            <Col key={shoe.id}>
-                                <Card className="mb-4 shadow-sm border-0">
-                                    <Carousel variant="dark">
-                                        {shoe.Pics?.map((pic, index) => (
-                                            <Carousel.Item key={index}>
-                                                <Card.Img
-                                                    className="img-fluid"
-                                                    src={pic}
-                                                    alt="Error Loading Pic try a different browser"
-                                                    style={{ height: '300px', objectFit: 'cover' }} // fixed size with cropping
-                                                />
-                                            </Carousel.Item>
-                                        ))}
-                                    </Carousel>
-                                    <Card.Body className="bg-dark text-white">
-                                        <h5 className="card-title">{shoe.Name}</h5>
-                                        <p className="card-text">Size(s) available: {shoe.Sizes?.join(',')}</p>
-                                        {shoe.Price ? <p>Price: {shoe.Price}</p> : "Ask about the price!"}
+                            <Col key={shoe.id} className="d-flex mb-4">
+                                <Card className="mb-4 shadow-sm border-0 h-100" style={{ display: 'flex', flexDirection: 'column' }}>
+                                    <ImageCollage images={shoe.Pics} />
+                                    <Card.Body className="bg-dark text-white" 
+                                        style={{ 
+                                            flexGrow: 1, 
+                                            flexShrink: 1,
+                                            flexBasis: 0,
+                                            display: 'flex', 
+                                            flexDirection: 'column', 
+                                            justifyContent: 'space-between' 
+                                        }}>
+                                        <div>
+                                            <h5 className="card-title">{shoe.Name}</h5>
+                                            <p className="card-text">Size(s) available: {shoe.Sizes?.join(',')}</p>
+                                            {shoe.Price ? <p>Price: {shoe.Price}</p> : "Ask about the price!"}
+                                        </div>
                                         <Row className="mt-3">
                                             <Contact/>
                                             <Col>

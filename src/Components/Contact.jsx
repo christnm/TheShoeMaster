@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Form, Button, Container, Col, Row, Modal } from "react-bootstrap"
+import { Form, Button, Col, Modal } from "react-bootstrap"
 import { MdEmail } from "react-icons/md"
 import emailjs from "@emailjs/browser"
 

@@ -1,4 +1,3 @@
-
 html{
   background-color: gainsboro;
   /* text-align: center;
@@ -49,6 +48,14 @@ html{
   to {
     transform: rotate(360deg);
   }
+}
+
+.collage-img {
+  transition: transform 0.3s ease;
+}
+
+.collage-img:hover {
+  transform: scale(1.05);
 }
 
 

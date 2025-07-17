@@ -1,10 +1,9 @@
-import { Home, NavBar, Men, PicUpload, Women, Contact, Admin, Kids } from './Components'
+import { Home, NavBar, Men, Women, Admin, Kids } from './Components'
 import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 
 
